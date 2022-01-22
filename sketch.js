@@ -23,8 +23,8 @@ function setup() {
 	//Create the Bodies Here.
 	
 	ground = new Ground(width/2,670,width,20)
-	Left = new Ground(1100,600,20,120)
-	Right = new Ground(1200,600,20,120)
+	Left = new Ground(width - width/4,600,20,120)
+	Right = new Ground((width - width/4)+100,600,20,120)
 	
 	var balloptions = {
 		isStatic:false,
@@ -32,7 +32,7 @@ function setup() {
 		friction:0,
 		density:1.2
 	}
-	ball = Bodies.circle(200,100,20, balloptions)
+	ball = Matter.Bodies.circle(width/4,height/2,20,balloptions)
   	World.add(world, ball)
 
 
@@ -48,9 +48,12 @@ function draw() {
   ground.show()
   Left.show()
   Right.show()
+  ellipse(ball.position.x, ball.position.y, 20)
   drawSprites();
- 
 }
 
-
-
+function keyPressed(){
+	if(keyCode === UP_ARROW){
+		Matter.Body.applyForce(ball,{x:0,y:0},{x:47.5,y:-75})
+	}
+}
