@@ -23,12 +23,12 @@ function setup() {
 	//Create the Bodies Here.
 	
 	ground = new Ground(width/2,670,width,20)
-	Left = new Ground(width - width/4,600,20,120)
-	Right = new Ground((width - width/4)+100,600,20,120)
+	Left = new Ground(width - (width/4),600,20,120)
+	Right = new Ground((width - (width/6))+100,600,20,120)
 	
 	var balloptions = {
 		isStatic:false,
-		restitution:0.8,
+		restitution:0,
 		friction:0,
 		density:1.2
 	}
@@ -43,6 +43,7 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
+  ellipseMode(RADIUS)
   background(0);
   
   ground.show()
@@ -54,6 +55,6 @@ function draw() {
 
 function keyPressed(){
 	if(keyCode === UP_ARROW){
-		Matter.Body.applyForce(ball,{x:0,y:0},{x:44.275,y:-40})
+		Matter.Body.applyForce(ball,{x:0,y:0},{x:45,y:-75})
 	}
 }
